@@ -21,3 +21,10 @@ Nokia Game Wap  Support Nokia N95 E71 N81 and Motorola V8 V3 E680
 ```
 
 ![image](https://github.com/user-attachments/assets/0e7e7e82-ee8a-46ff-b840-9a524defa226)
+
+
+
+### Developing
+* new version
+
+![image](https://github.com/user-attachments/assets/0ac3d501-8682-4c59-89a1-9b2db7edcd8b)
