@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{{ category }} - OldFunGuy(老风机)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body { font-family: Arial, sans-serif; background-color: #F0F0F0; }
+        h1 { color: #333; text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li { background-color: #FFF; margin: 5px 0; padding: 10px; }
+        a { color: #0000FF; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>{{ category }}</h1>
+    <ul>
+    {% for game in games %}
+        <li><a href="{{ url_for('game', category=category, game=game) }}">{{ game }}</a></li>
+    {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('index') }}">返回首页</a></p>
+</body>
+</html>

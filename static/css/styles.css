@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+}
+h1, h2 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: #0066cc;
+    text-align: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.categories {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.categories ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.categories li {
+    margin-bottom: 5px;
+}
+.categories a {
+    text-decoration: none;
+    color: #0066cc;
+}
+.game-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.game-item {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: calc(50% - 5px);
+    box-sizing: border-box;
+    text-align: center;
+}
+.game-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.game-item .name {
+    font-size: 14px;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.search {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.search input[type="text"] {
+    width: 70%;
+    padding: 5px;
+}
+.search input[type="submit"] {
+    width: 25%;
+    padding: 5px;
+}
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+.pagination a {
+    color: #0066cc;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #ddd;
+    border-radius: 3px;
+}
+.back-link {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.back-link a {
+    color: #0066cc;
+    text-decoration: none;
+}
+.game-detail {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+.game-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.game-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.download-links {
+    margin-top: 10px;
+    text-align: center;
+}
+.download-links a {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 15px;
+    color: #fff;
+    background-color: #0066cc;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.game-description {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+    .categories {
+        width: 200px;
+        margin-right: 20px;
+    }
+    .game-grid {
+        flex: 1;
+        justify-content: flex-start;
+    }
+    .game-item {
+        width: calc(25% - 15px);
+        margin-right: 20px;
+    }
+    .game-item:nth-child(4n) {
+        margin-right: 0;
+    }
+    .game-detail {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    body {
+        padding: 20px;
+    }
+    .game-images img {
+        max-width: calc(50% - 5px);
+    }
+}

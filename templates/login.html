@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OldFunGuy(老风机) - 登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            background-color: #F0F0F0;
+            margin: 0;
+            padding: 5px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+        .form-container {
+            background-color: #FFF;
+            padding: 10px;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        .form-container input {
+            width: 100%;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 5px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* PC 样式 */
+        @media screen and (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .form-container {
+                padding: 20px;
+                max-width: 400px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .form-container input {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .form-container input[type="submit"] {
+                cursor: pointer;
+            }
+            .form-container input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>登录</h1>
+    <div class="form-container">
+        {% if error %}
+        <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <form action="{{ url_for('login') }}" method="post">
+            <label for="username">用户名:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">密码:</label>
+            <input type="password" name="password" id="password" required>
+            <input type="submit" value="登录">
+        </form>
+    </div>
+    <a href="{{ url_for('index') }}" class="back-link">返回首页</a>
+</body>
+</html>

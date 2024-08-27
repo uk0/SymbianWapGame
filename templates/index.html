@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OldFunGuy(老风机)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+            margin: 0;
+            padding: 2px;
+            font-size: 12px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .categories {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .category {
+            display: inline-block;
+            background-color: #8d8e90;
+            margin: 1px;
+            padding: 2px 4px;
+            font-size: 10px;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+        .search {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .search input[type="text"] {
+            width: 60%;
+            max-width: 120px;
+            font-size: 10px;
+            padding: 2px;
+        }
+        .search input[type="submit"] {
+            font-size: 10px;
+            padding: 2px 4px;
+        }
+        .games {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 2px;
+        }
+        .game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 48%;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .game-image {
+            width: 120px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*overflow: hidden;*/
+            margin-bottom: 2px;
+        }
+        .game-image img {
+            width: 88%;
+            height: 88%;
+            /*object-fit: cover;*/
+        }
+        .game-name {
+            font-size: 12px;
+            word-break: break-word;
+            max-width: 120px;
+        }
+        a {
+            color: #0000FF;
+            text-decoration: none;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 10px;
+        }
+        .pagination a, .pagination span {
+            margin: 0 2px;
+        }
+        .active-category {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .auth-buttons {
+            text-align: right;
+            margin-bottom: 3px;
+        }
+        .footer {
+            margin-top: 5px;
+            padding: 3px;
+            background-color: #f0f0f0;
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+        }
+        .auth-button {
+            padding: 1px 3px;
+            margin-left: 1px;
+            border-radius: 2px;
+            font-size: 9px;
+        }
+
+        /* PC 样式 */
+        @media screen and (min-width: 768px) {
+            body {
+                padding: 20px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .category {
+                font-size: 14px;
+                padding: 5px 10px;
+                margin: 5px;
+            }
+            .search input[type="text"] {
+                font-size: 14px;
+                padding: 5px;
+                width: 80%;
+                max-width: 300px;
+            }
+            .search input[type="submit"] {
+                font-size: 14px;
+                padding: 5px 10px;
+            }
+            .games {
+                max-width: 1000px;
+                margin: 0 auto;
+                justify-content: flex-start;
+            }
+            .game {
+                width: calc(18.66% - 20px);
+                margin-top: 28px;
+            }
+            .game-image {
+                width: 120px;
+                height: 120px;
+            }
+          .game-image img {
+            width: 120px;
+            height: 160px;
+            /*object-fit: cover;*/
+        }
+            .game-name {
+                margin-top: 28px;
+                font-size: 14px;
+                max-width: 120px;
+            }
+            .pagination {
+                font-size: 14px;
+            }
+            .auth-button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+            .footer {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-buttons">
+        {% if session.get('logged_in') %}
+            <canvas id="avatar" width="12" height="12"></canvas>
+            <a href="{{ url_for('logout') }}"  class="auth-button">退出</a>
+        {% else %}
+            <a href="{{ url_for('register') }}"  class="auth-button">注册</a>
+            <a href="{{ url_for('login') }}"  class="auth-button">登录</a>
+        {% endif %}
+    </div>
+    {% if session.get('logged_in') %}
+    <script>
+    function generateAvatar() {
+        var canvas = document.getElementById('avatar');
+        var ctx = canvas.getContext('2d');
+        var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
+        ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillRect(0, 0, 12, 12);
+
+        for (var i = 0; i < 3; i++) {
+            ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+            var x = Math.floor(Math.random() * 12);
+            var y = Math.floor(Math.random() * 12);
+            var size = Math.floor(Math.random() * 4) + 2;
+            ctx.fillRect(x, y, size, size);
+        }
+    }
+
+    window.onload = generateAvatar;
+    </script>
+    {% endif %}
+    <h1>OldFunGuy(老风机)</h1>
+
+    <div class="categories">
+        <a href="{{ url_for('index') }}" class="category {% if not category_filter %}active-category{% endif %}">全部</a>
+        {% for category in categories %}
+            <a href="{{ url_for('index', category=category) }}" class="category {% if category_filter == category %}active-category{% endif %}">{{ category }}</a>
+        {% endfor %}
+    </div>
+    <div class="search">
+        <form action="/" method="get">
+            <input type="text" name="search" placeholder="搜索游戏" value="{{ search_query }}">
+            {% if category_filter %}
+            <input type="hidden" name="category" value="{{ category_filter }}">
+            {% endif %}
+            <input type="submit" value="搜索">
+        </form>
+    </div>
+    <div class="games">
+        {% for game in games %}
+            <div class="game">
+                <a href="{{ url_for('game', category=game.category, game=game.name) }}">
+                    <div class="game-image">
+                        <img src="{{ url_for('serve_thumbnail', thumbnail=game.thumbnail) if game.thumbnail else url_for('serve_default_image') }}"
+                             alt="{{ game.name }}"
+                             onerror="this.onerror=null; this.src='{{ url_for('serve_default_image') }}';">
+                    </div>
+                    <div class="game-name">{{ game.name }}</div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page-1, search=search_query, category=category_filter) }}">上一页</a>
+        {% endif %}
+        <span>第 {{ page }} 页，共 {{ total_pages }} 页</span>
+        {% if page < total_pages %}
+            <a href="{{ url_for('index', page=page+1, search=search_query, category=category_filter) }}">下一页</a>
+        {% endif %}
+    </div>
+
+   <div class="footer">
+        <p>免责声明：本网站的所有游戏数据均来源于网友投稿。如有侵权，请您即时与我联系 zhangjianxinnet@gmail.com (Powered by poe code generation)</p>
+    </div>
+    <script>
+        function loadDefaultImages() {
+            var images = document.querySelectorAll('.game-image img');
+            images.forEach(function(img) {
+                if (img.naturalWidth === 0 || img.naturalHeight === 0) {
+                    img.src = "{{ url_for('serve_default_image') }}";
+                }
+            });
+        }
+
+        window.onload = function() {
+            loadDefaultImages();
+            {% if session.get('logged_in') %}
+            generateAvatar();
+            {% endif %}
+        };
+    </script>
+</body>
+</html>

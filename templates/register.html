@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OldFunGuy(老风机) - 注册</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            background-color: #F0F0F0;
+            margin: 0;
+            padding: 5px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+        .form-container {
+            background-color: #FFF;
+            padding: 10px;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        .form-container input,
+        .form-container button {
+            width: 100%;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 5px;
+        }
+        .success-message {
+            color: green;
+            margin-bottom: 5px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* PC 样式 */
+        @media screen and (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .form-container {
+                padding: 20px;
+                max-width: 400px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .form-container input,
+            .form-container button {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .form-container button {
+                cursor: pointer;
+            }
+            .form-container button:hover {
+                background-color: #0056b3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>注册</h1>
+    <div class="form-container">
+        {% if error %}
+        <p class="error-message">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+        <p class="success-message">{{ success }}</p>
+        {% endif %}
+        <form action="{{ url_for('register') }}" method="post">
+            <label for="username">用户名称:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">用户密码:</label>
+            <input type="password" name="password" id="password" required>
+
+            <label for="email">邮箱:</label>
+            <input type="email" name="email" id="email" required>
+
+            <button type="button" onclick="sendVerificationCode()">发送验证码</button>
+
+            <label for="verification_code">验证码:</label>
+            <input type="text" name="verification_code" id="verification_code" required>
+
+            <button type="submit">注册</button>
+        </form>
+    </div>
+    <a href="{{ url_for('index') }}" class="back-link">返回首页</a>
+
+    <script>
+    function sendVerificationCode() {
+    var email = document.querySelector('input[name="email"]').value;
+    if (email) {
+        fetch('/send_verification_code', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('验证码已发送到您的邮箱');
+            } else {
+                alert('发送验证码失败: ' + data.error);
+            }
+        });
+    } else {
+        alert('请先输入邮箱地址');
+    }
+}
+    </script>
+</body>
+</html>
