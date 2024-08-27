@@ -4,4 +4,18 @@ Nokia Game Wap  Support Nokia N95 E71 N81 and Motorola V8 V3 E680
 
 
 
+
+### Simple 
+
+
 ![364f7bb735d28752bbb6bc5b781aad1](https://github.com/user-attachments/assets/6876e2e2-1f97-446d-a3bf-4cb194a70d9a)
+
+
+
+### Baidu Cloud Download ...
+* open `https://www.bejson.com/enc/base64/`
+* copy code to base64 decode 
+
+```bash
+6YCa6L+H572R55uY5YiG5Lqr55qE5paH5Lu277yaNzcyM0dhbWVzCumTvuaOpTogaHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMWZKUlg3VVQtRXZYdW1SUDRvTXVCY0Eg5o+Q5Y+W56CBOiB1azAwIAotLeadpeiHqueZvuW6pue9keebmOi2hee6p+S8muWRmHYz55qE5YiG5Lqr
+```
