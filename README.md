@@ -12,10 +12,12 @@ Nokia Game Wap  Support Nokia N95 E71 N81 and Motorola V8 V3 E680
 
 
 
-### Baidu Cloud Download ...
+### Baidu Cloud Download（70GB+） ...
 * open `https://www.bejson.com/enc/base64/`
 * copy code to base64 decode 
 
 ```bash
 6YCa6L+H572R55uY5YiG5Lqr55qE5paH5Lu277yaNzcyM0dhbWVzCumTvuaOpTogaHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMWZKUlg3VVQtRXZYdW1SUDRvTXVCY0Eg5o+Q5Y+W56CBOiB1azAwIAotLeadpeiHqueZvuW6pue9keebmOi2hee6p+S8muWRmHYz55qE5YiG5Lqr
 ```
+
+![image](https://github.com/user-attachments/assets/0e7e7e82-ee8a-46ff-b840-9a524defa226)
